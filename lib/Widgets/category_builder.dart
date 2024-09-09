@@ -8,65 +8,67 @@ class CategoryBuilder extends StatelessWidget {
   });
 
   final List<CategoryModel> availableCategories = const [
-    CategoryModel(
-      id: 'c1',
-      title: 'Italian',
-      color: Colors.purple,
-    ),
+    CategoryModel(id: 'c1', title: 'Italian', image: 'Assets/Italianfood.jpg'),
     CategoryModel(
       id: 'c2',
       title: 'Quick & Easy',
-      color: Colors.red,
+      image: 'Assets/quickfood.jpg',
     ),
     CategoryModel(
       id: 'c3',
       title: 'Hamburgers',
-      color: Colors.orange,
+      image: 'Assets/Hamburgers.jpg',
     ),
     CategoryModel(
       id: 'c4',
       title: 'German',
-      color: Colors.amber,
+      image: 'Assets/GermanFood.jpg',
     ),
     CategoryModel(
       id: 'c5',
       title: 'Light & Lovely',
-      color: Colors.blue,
+      image: 'Assets/lightfood.jpg',
     ),
     CategoryModel(
       id: 'c6',
       title: 'Exotic',
-      color: Colors.green,
+      image: 'Assets/ExoticFood.webp',
     ),
     CategoryModel(
       id: 'c7',
       title: 'Breakfast',
-      color: Colors.lightBlue,
+      image: 'Assets/BreakFast.webp',
     ),
     CategoryModel(
       id: 'c8',
       title: 'Asian',
-      color: Colors.lightGreen,
+      image: 'Assets/AsianFood.webp',
     ),
     CategoryModel(
       id: 'c9',
       title: 'French',
-      color: Colors.pink,
+      image: 'Assets/french.webp',
     ),
     CategoryModel(
       id: 'c10',
       title: 'Summer',
-      color: Colors.teal,
+      image: 'Assets/Summer.jpg',
     ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, mainAxisSpacing: 20, crossAxisSpacing: 20),
-        itemCount: availableCategories.length,
-        itemBuilder: (context, index) =>
-            CategoryItem(cat: availableCategories[index]));
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
+      child: GridView.builder(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: 20,
+              crossAxisSpacing: 20,
+              childAspectRatio: 1.3),
+          itemCount: availableCategories.length,
+          itemBuilder: (context, index) =>
+              CategoryItem(cat: availableCategories[index])),
+    );
   }
 }
