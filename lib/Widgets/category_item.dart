@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/Models/category_model.dart';
+import 'package:meal_app/Views/meal_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   const CategoryItem({super.key, required this.cat});
@@ -8,7 +9,9 @@ class CategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, MealScreen.id);
+      },
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -39,8 +42,7 @@ class CategoryItem extends StatelessWidget {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.center,
+            Center(
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
@@ -55,7 +57,7 @@ class CategoryItem extends StatelessWidget {
                     shadows: [
                       Shadow(
                         blurRadius: 6.0,
-                        color: Colors.black54, // Text shadow
+                        color: Colors.grey, // Text shadow
                         offset: Offset(1.5, 1.5),
                       ),
                     ],

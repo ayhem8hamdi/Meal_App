@@ -65,7 +65,7 @@ class CategoryBuilder extends StatelessWidget {
               crossAxisCount: 2,
               mainAxisSpacing: 20,
               crossAxisSpacing: 20,
-              childAspectRatio: 1.3),
+              childAspectRatio: 1.4),
           itemCount: availableCategories.length,
           itemBuilder: (context, index) =>
               CategoryItem(cat: availableCategories[index])),
