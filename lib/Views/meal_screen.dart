@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/Models/4.2%20meal.dart';
+import 'package:meal_app/Models/category_model.dart';
+import 'package:meal_app/Widgets/meal_item_builder.dart';
 
 class MealScreen extends StatelessWidget {
   const MealScreen({super.key});
   static String id = 'mealscreen';
-
   final List<Meal> dummyMeals = const [
     Meal(
       id: 'm1',
@@ -355,17 +356,21 @@ class MealScreen extends StatelessWidget {
       isLactoseFree: true,
     ),
   ];
-/*{"threads":[{"position":0,"start":0,"end":6186,"connection":"open"},{"position":12372,"start":6187,"end":12372,"connection":"closed"}],"url":"https://att-c.udemycdn.com/2023-09-20_13-15-21-310eb4299deef2f4150b38ecbbe6820d/original.dart?response-content-disposition=attachment%3B+filename%3Ddummy_data.dart&Expires=1695750031&Signature=ezKEDPt9YdhLv8zlZrWPaX0bscvj90ReedEWsz77Pr8beiLIoIltvKl-~tIfoix-99DRAudjGmN~YsC61ZX-ic0~z2VmoShUzFnxiEsNAnoRsnoWyROv4ts8yQfrrhfivJAwRXA9eRvFpNTJbD5C8MYnrvkdYQtonsCv5~NOEhxowsq~QnHeX3ltP1cifmWAk9-G5bB4fQr7X-BHYuvDIOeCUD6-1dpyqSWhIeUPQAZ1mPTIEK3fvQ4wuZ8P-MgVb-mvTrkynHXiTus5HDRD8UAybpIBCyrtXzFVltSlVaiWis8aerDuITVqFZuI-vseaMNZcOEKQaXhYHfB5u2gXg__&Key-Pair-Id=APKAITJV77WS5ZT7262A","method":"GET","port":443,"downloadSize":12372,"headers":{"content-type":"binary/octet-stream","content-length":"12372","connection":"close","date":"Tue, 26 Sep 2023 03:49:47 GMT","x-amz-replication-status":"COMPLETED","last-modified":"Wed, 20 Sep 2023 13:15:22 GMT","etag":"\"4de4f0f7196dbf656f1bcb71b56c3809\"","x-amz-server-side-encryption":"AES256","x-amz-meta-qqfilename":"dummy_data.dart","x-amz-version-id":"_7XJ4NhebHBsyx9llg.QpsUip9h4A.jX","content-disposition":"attachment; filename=dummy_data.dart","accept-ranges":"bytes","server":"AmazonS3","x-cache":"Hit from cloudfront","via":"1.1 7945124cc4b7caf5a8180cc1189567ee.cloudfront.net (CloudFront)","x-amz-cf-pop":"LHR62-C3","x-amz-cf-id":"m7ZGbISfOxFeOkspWAKqgVGwuXrCNJ9iEU3x9W8p7xqEnypRXhWXrA==","age":"34355","x-cdn":"cf-cloudfront","vary":"Origin"}}  */
-
   @override
   Widget build(BuildContext context) {
+    CategoryModel cat =
+        ModalRoute.of(context)!.settings.arguments as CategoryModel;
+    List<Meal> filtredList = dummyMeals
+        .where((element) => element.categories.contains(cat.id))
+        .toList();
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          'Meals',
-          style: TextStyle(fontSize: 28),
+        title: Text(
+          cat.title,
+          style: const TextStyle(fontSize: 28),
         ),
       ),
+      body: MealItemBuilder(filtredList: filtredList),
     );
   }
 }

@@ -10,7 +10,7 @@ class CategoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, MealScreen.id);
+        Navigator.pushNamed(context, MealScreen.id, arguments: cat);
       },
       child: Container(
         decoration: BoxDecoration(
