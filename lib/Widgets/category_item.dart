@@ -6,9 +6,17 @@ class CategoryItem extends StatelessWidget {
   final CategoryModel cat;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: cat.color,
-      child: Text(cat.title),
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        decoration: BoxDecoration(
+            color: cat.color, borderRadius: BorderRadius.circular(16)),
+        child: Center(
+            child: Text(
+          cat.title,
+          style: const TextStyle(color: Colors.white, fontSize: 25),
+        )),
+      ),
     );
   }
 }
