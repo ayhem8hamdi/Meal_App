@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/Models/4.2%20meal.dart';
+import 'package:meal_app/Views/detail_screen.dart';
 import 'package:meal_app/Widgets/meal_item_footer.dart';
-import 'package:transparent_image/transparent_image.dart';
+import 'package:meal_app/Widgets/transparent_image.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({super.key, required this.meal});
@@ -10,7 +11,9 @@ class MealItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.pushNamed(context, DetailScreen.id, arguments: meal);
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 10),
         child: Card(
@@ -24,15 +27,7 @@ class MealItem extends StatelessWidget {
                         topLeft: Radius.circular(16),
                         topRight:
                             Radius.circular(16)), // Clip with border radius
-                    child: FadeInImage.memoryNetwork(
-                      height: 210,
-                      width: double.infinity,
-                      placeholder: kTransparentImage, // Transparent placeholder
-                      image: meal.imageUrl, // Image from the internet
-                      fadeInDuration:
-                          const Duration(seconds: 2), // Fade-in duration
-                      fit: BoxFit.fitWidth, // Control how the image fits
-                    ),
+                    child: TrasparentImageWidget(meal: meal),
                   ),
                   Positioned(
                     bottom: 0,

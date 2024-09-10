@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/Views/categories_screen.dart';
+import 'package:meal_app/Views/detail_screen.dart';
+
 import 'package:meal_app/Views/meal_screen.dart';
 
 void main() {
@@ -14,7 +16,8 @@ class MealApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         MealScreen.id: (context) => const MealScreen(),
-        CategoriesScreen.id: (context) => const CategoriesScreen()
+        CategoriesScreen.id: (context) => const CategoriesScreen(),
+        DetailScreen.id: (context) => const DetailScreen()
       },
       theme: ThemeData.dark(),
       debugShowCheckedModeBanner: false,
