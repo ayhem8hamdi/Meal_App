@@ -27,7 +27,10 @@ class MealItem extends StatelessWidget {
                         topLeft: Radius.circular(16),
                         topRight:
                             Radius.circular(16)), // Clip with border radius
-                    child: TrasparentImageWidget(meal: meal),
+                    child: TrasparentImageWidget(
+                      meal: meal,
+                      height: 210,
+                    ),
                   ),
                   Positioned(
                     bottom: 0,
