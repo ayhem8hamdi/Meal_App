@@ -62,10 +62,10 @@ class CategoryBuilder extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 25),
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
+              crossAxisCount: 1,
               mainAxisSpacing: 20,
               crossAxisSpacing: 20,
-              childAspectRatio: 1.4),
+              childAspectRatio: 1.7),
           itemCount: availableCategories.length,
           itemBuilder: (context, index) =>
               CategoryItem(cat: availableCategories[index])),

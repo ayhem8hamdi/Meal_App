@@ -51,7 +51,7 @@ class CategoryItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: Colors.white,
-                    fontSize: 27,
+                    fontSize: 40,
                     overflow: TextOverflow.ellipsis,
                     fontWeight: FontWeight.bold,
                     shadows: [
