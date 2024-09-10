@@ -370,7 +370,10 @@ class MealScreen extends StatelessWidget {
           style: const TextStyle(fontSize: 28),
         ),
       ),
-      body: MealItemBuilder(filtredList: filtredList),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+        child: MealItemBuilder(filtredList: filtredList),
+      ),
     );
   }
 }
