@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     List<Meal> fav = BlocProvider.of<FavouriteCubit>(context).favourite;
+
     return Scaffold(
       appBar: selectedIndex != 0
           ? AppBar(
@@ -37,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   icon: const Icon(Icons.arrow_back)),
               title: const Text(
                 'Favourites',
-                style: const TextStyle(fontSize: 28),
+                style: TextStyle(fontSize: 28),
               ),
             )
           : null,

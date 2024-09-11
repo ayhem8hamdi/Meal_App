@@ -12,7 +12,13 @@ class StarIcon extends StatefulWidget {
 }
 
 class _StarIconState extends State<StarIcon> {
-  bool isPressed = false;
+  late bool isPressed;
+
+  @override
+  void initState() {
+    super.initState();
+    isPressed = widget.meal.favourite;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +27,23 @@ class _StarIconState extends State<StarIcon> {
           isPressed = !isPressed;
           setState(() {});
           if (isPressed == true) {
+            widget.meal.favourite = true;
             BlocProvider.of<FavouriteCubit>(context).addList(widget.meal);
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Added to Favorites!'),
+              duration: Duration(
+                  seconds:
+                      2), // Duration for how long the snackbar will be shown
+            ));
           } else {
+            widget.meal.favourite = false;
             BlocProvider.of<FavouriteCubit>(context).removeList(widget.meal);
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+              content: Text('Removed from Favorites!'),
+              duration: Duration(
+                  seconds:
+                      1), // Duration for how long the snackbar will be shown
+            ));
           }
         },
         icon: isPressed == false
