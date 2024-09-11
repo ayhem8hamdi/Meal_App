@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/Models/4.2%20meal.dart';
+import 'package:meal_app/Widgets/add_favorite_widget.dart';
 import 'package:meal_app/Widgets/details_screen_body.dart';
 
 class DetailScreen extends StatelessWidget {
@@ -15,6 +16,11 @@ class DetailScreen extends StatelessWidget {
           meal.title,
           style: const TextStyle(fontSize: 28),
         ),
+        actions: [
+          StarIcon(
+            meal: meal,
+          )
+        ],
       ),
       body: DetailsScraanBody(meal: meal),
     );

@@ -1,0 +1,3 @@
+class FavouriteCubitState {}
+
+class InitialCubit {}
