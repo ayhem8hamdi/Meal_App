@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/Cubits/Favourite_meals_cubit/favourite_cubit.dart';
+import 'package:meal_app/Methodes/scaffold_messenger.dart';
 import 'package:meal_app/Models/4.2%20meal.dart';
 
 class StarIcon extends StatefulWidget {
@@ -29,21 +30,11 @@ class _StarIconState extends State<StarIcon> {
           if (isPressed == true) {
             widget.meal.favourite = true;
             BlocProvider.of<FavouriteCubit>(context).addList(widget.meal);
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Added to Favorites!'),
-              duration: Duration(
-                  seconds:
-                      2), // Duration for how long the snackbar will be shown
-            ));
+            scafMess(context, 'Added to Favourite');
           } else {
             widget.meal.favourite = false;
             BlocProvider.of<FavouriteCubit>(context).removeList(widget.meal);
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('Removed from Favorites!'),
-              duration: Duration(
-                  seconds:
-                      1), // Duration for how long the snackbar will be shown
-            ));
+            scafMess(context, 'Removed from Favorites!');
           }
         },
         icon: isPressed == false
