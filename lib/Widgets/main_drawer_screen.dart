@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/Widgets/custom_list_tile.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
@@ -25,14 +26,23 @@ class MainDrawer extends StatelessWidget {
                 Icon(
                   Icons.fastfood,
                   size: 45,
+                  color: Color(0xffE6E0E9),
                 ),
                 Text(
                   'Coocking Up !',
-                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 )
               ],
             ),
-          )
+          ),
+          const SizedBox(
+            height: 18,
+          ),
+          const CustomListTile(icondata: Icons.restaurant, text: 'Meals'),
+          const CustomListTile(icondata: Icons.settings, text: 'Filters')
         ],
       ),
     );
