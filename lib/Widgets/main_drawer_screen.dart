@@ -54,7 +54,7 @@ class MainDrawer extends StatelessWidget {
             text: 'Filters',
             onTap: () {
               Navigator.pop(context);
-              Navigator.pushReplacementNamed(context, FilterScreen.id);
+              Navigator.pushNamed(context, FilterScreen.id);
             },
           )
         ],

@@ -29,17 +29,12 @@ class _FilterScreenState extends State<FilterScreen> {
           actions: [
             IconButton(
                 onPressed: () {
-                  List<Meal> list =
-                      BlocProvider.of<FavouriteCubit>(context).dummyMeals;
-                  cubit.specefic = [];
-                  list.forEach((meal) => meal.isGlutenFree == cubit.isGluteen &&
-                          meal.isVegan == cubit.vegan &&
-                          meal.isLactoseFree == cubit.lactoseFree &&
-                          meal.isVegetarian == cubit.vegetarian
-                      ? cubit.specefic.add(meal)
-                      : null);
-                  BlocProvider.of<FavouriteCubit>(context).dummyMeals =
-                      cubit.specefic;
+                  BlocProvider.of<FavouriteCubit>(context).UpdateSpecificList(
+                      isGluteen: cubit.isGluteen,
+                      vegan: cubit.vegan,
+                      vegetarian: cubit.vegetarian,
+                      lactoseFree: cubit.lactoseFree);
+                  Navigator.pop(context);
                   scafMess(context, 'Filter Applied Successfully');
                 },
                 icon: const CustomIcon(

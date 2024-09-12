@@ -370,4 +370,19 @@ class FavouriteCubit extends Cubit<FavouriteCubitState> {
   void removeList(Meal meal) {
     favourite.remove(meal);
   }
+
+  void UpdateSpecificList(
+      {required bool isGluteen,
+      required bool vegan,
+      required bool vegetarian,
+      required bool lactoseFree}) {
+    emit(DummyInitialState());
+    specefic = dummyMeals.where((meal) {
+      return meal.isGlutenFree == isGluteen &&
+          meal.isVegan == vegan &&
+          meal.isLactoseFree == lactoseFree &&
+          meal.isVegetarian == vegetarian;
+    }).toList();
+    emit(SpcficState());
+  }
 }

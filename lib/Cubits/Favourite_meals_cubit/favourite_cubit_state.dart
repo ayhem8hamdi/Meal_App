@@ -1,3 +1,5 @@
 class FavouriteCubitState {}
 
-class InitialCubit {}
+class SpcficState extends FavouriteCubitState {}
+
+class DummyInitialState extends FavouriteCubitState {}
