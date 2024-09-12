@@ -355,6 +355,12 @@ class FavouriteCubit extends Cubit<FavouriteCubitState> {
     ),
   ];
   List<Meal> favourite = [];
+  List<Meal> specefic = [];
+  bool isGluteen = false;
+  bool vegan = false;
+  bool vegetarian = false;
+  bool lactoseFree = false;
+
   void addList(Meal meal) {
     if (favourite.contains(meal) == false) {
       favourite.add(meal);

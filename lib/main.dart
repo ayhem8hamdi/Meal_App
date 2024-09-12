@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/Cubits/Favourite_meals_cubit/favourite_cubit.dart';
 import 'package:meal_app/Views/categories_screen.dart';
 import 'package:meal_app/Views/detail_screen.dart';
+import 'package:meal_app/Views/filter_screen.dart';
 import 'package:meal_app/Views/home_screen.dart';
 
 import 'package:meal_app/Views/meal_screen.dart';
@@ -23,7 +24,8 @@ class MealApp extends StatelessWidget {
           MealScreen.id: (context) => const MealScreen(),
           CategoriesScreen.id: (context) => const CategoriesScreen(),
           DetailScreen.id: (context) => const DetailScreen(),
-          HomeScreen.id: (context) => const HomeScreen()
+          HomeScreen.id: (context) => const HomeScreen(),
+          FilterScreen.id: (context) => const FilterScreen()
         },
         theme: ThemeData.dark(),
         debugShowCheckedModeBanner: false,

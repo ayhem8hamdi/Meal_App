@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/Views/filter_screen.dart';
 import 'package:meal_app/Widgets/custom_list_tile.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -41,8 +42,21 @@ class MainDrawer extends StatelessWidget {
           const SizedBox(
             height: 18,
           ),
-          const CustomListTile(icondata: Icons.restaurant, text: 'Meals'),
-          const CustomListTile(icondata: Icons.settings, text: 'Filters')
+          CustomListTile(
+            icondata: Icons.restaurant,
+            text: 'Meals',
+            onTap: () {
+              Navigator.pop(context);
+            },
+          ),
+          CustomListTile(
+            icondata: Icons.settings,
+            text: 'Filters',
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pushReplacementNamed(context, FilterScreen.id);
+            },
+          )
         ],
       ),
     );
