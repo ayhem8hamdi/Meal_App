@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meal_app/Cubits/Favourite_meals_cubit/favourite_cubit.dart';
 import 'package:meal_app/Methodes/scaffold_messenger.dart';
-import 'package:meal_app/Models/4.2%20meal.dart';
 import 'package:meal_app/Views/home_screen.dart';
 import 'package:meal_app/Widgets/custom_icon.dart';
 
@@ -15,6 +14,17 @@ class FilterScreen extends StatefulWidget {
 }
 
 class _FilterScreenState extends State<FilterScreen> {
+  void reset(BuildContext context) {
+    FavouriteCubit state = BlocProvider.of<FavouriteCubit>(context);
+    setState(() {
+      state.vegan = false;
+      state.vegetarian = false;
+      state.lactoseFree = false;
+      state.isGluteen = false;
+    });
+    state.resett();
+  }
+
   @override
   Widget build(BuildContext context) {
     FavouriteCubit cubit = BlocProvider.of<FavouriteCubit>(context);
@@ -27,6 +37,12 @@ class _FilterScreenState extends State<FilterScreen> {
               },
               icon: const Icon(Icons.arrow_back)),
           actions: [
+            IconButton(
+                onPressed: () {
+                  reset(context);
+                  scafMess(context, 'There are no filter anymore');
+                },
+                icon: const CustomIcon(icon: Icons.refresh)),
             IconButton(
                 onPressed: () {
                   BlocProvider.of<FavouriteCubit>(context).UpdateSpecificList(
@@ -58,10 +74,10 @@ class _FilterScreenState extends State<FilterScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               activeColor: Colors.orange.withOpacity(0.77),
-              value: BlocProvider.of<FavouriteCubit>(context).isGluteen,
+              value: cubit.isGluteen,
               onChanged: (bool value) {
                 setState(() {
-                  BlocProvider.of<FavouriteCubit>(context).isGluteen = value;
+                  cubit.isGluteen = value;
                 });
               }),
           SwitchListTile(
@@ -75,10 +91,10 @@ class _FilterScreenState extends State<FilterScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               activeColor: Colors.orange.withOpacity(0.77),
-              value: BlocProvider.of<FavouriteCubit>(context).lactoseFree,
+              value: cubit.lactoseFree,
               onChanged: (bool value) {
                 setState(() {
-                  BlocProvider.of<FavouriteCubit>(context).lactoseFree = value;
+                  cubit.lactoseFree = value;
                 });
               }),
           SwitchListTile(
@@ -92,10 +108,10 @@ class _FilterScreenState extends State<FilterScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               activeColor: Colors.orange.withOpacity(0.77),
-              value: BlocProvider.of<FavouriteCubit>(context).vegan,
+              value: cubit.vegan,
               onChanged: (bool value) {
                 setState(() {
-                  BlocProvider.of<FavouriteCubit>(context).vegan = value;
+                  cubit.vegan = value;
                 });
               }),
           SwitchListTile(
@@ -109,10 +125,10 @@ class _FilterScreenState extends State<FilterScreen> {
                 style: TextStyle(fontSize: 18),
               ),
               activeColor: Colors.orange.withOpacity(0.77),
-              value: BlocProvider.of<FavouriteCubit>(context).vegetarian,
+              value: cubit.vegetarian,
               onChanged: (bool value) {
                 setState(() {
-                  BlocProvider.of<FavouriteCubit>(context).vegetarian = value;
+                  cubit.vegetarian = value;
                 });
               })
         ],

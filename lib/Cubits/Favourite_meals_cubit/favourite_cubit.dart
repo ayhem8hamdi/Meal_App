@@ -371,6 +371,10 @@ class FavouriteCubit extends Cubit<FavouriteCubitState> {
     favourite.remove(meal);
   }
 
+  void resett() {
+    emit(DummyInitialState());
+  }
+
   void UpdateSpecificList(
       {required bool isGluteen,
       required bool vegan,
